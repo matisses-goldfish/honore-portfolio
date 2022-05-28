@@ -8,6 +8,7 @@
 // Import react to iniatiallize page
 import React from 'react';
 
+
 // Import components from material ui
 import {makeStyles} from "@material-ui/core";
 
@@ -19,6 +20,10 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider, } from "@material-ui/core/styles";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 
 
 // toggle 
@@ -66,8 +71,16 @@ const homeTheme = makeStyles((theme) => ({
   }
 }));
 
+
+
 function Home(){
   const classes = homeTheme();
+
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <React.Fragment>    
@@ -75,17 +88,19 @@ function Home(){
     {/* toggle */}
     <Draggable>
       {/* TODO: make toggle position right on page- abosulte but aslo sticky?IDK*/}
-        <Box theme={theme} sx={{ 
+        <Box  theme={theme} sx={{ 
           bgcolor: '#F3F3F3', 
           height: '30vh', 
           width:'50vh', 
           p: 1.5, 
+          ml: 120,
           borderRadius: 5, 
           border: "solid #000000 1px",
           }} 
-          position="absolute">
-            
-          <Grid container direction="row" > 
+          position="absolute" justifyContent="end"
+          >
+          <Container value="1">
+          <Grid container direction="row"> 
             <Grid Item>
               <CloseRoundedIcon/>
             </Grid>
@@ -99,6 +114,8 @@ function Home(){
           <Stack direction="Column" justifyContent="center"> 
             <Stack spacing={3} sx={{mb:2}} direction="row" justifyContent="center">
               <Button 
+                onChange={handleChange}
+                value="2"
                 style={{
                   borderRadius: 17,
                   border: "solid #000000 1px",
@@ -112,6 +129,8 @@ function Home(){
                   background color
                 </Button>
                 <Button 
+                  onChange={handleChange}
+                  value="3"
                   style={{
                     borderRadius: 17,
                     border: "solid #000000 1px",
@@ -126,7 +145,9 @@ function Home(){
             </Stack>
 
             <Stack spacing={3} sx={{mb:2}} direction="row" justifyContent="center"> 
-              <Button 
+              <Button            
+                onChange={handleChange}
+                value="4"
                 style={{
                   borderRadius: 17,
                   border: "solid #000000 1px",
@@ -139,6 +160,8 @@ function Home(){
                   }}>
                   fonts</Button>
               <Button 
+                onChange={handleChange}
+                value="5"
                 style={{
                   borderRadius: 17,
                   border: "solid #000000 1px",
@@ -153,6 +176,7 @@ function Home(){
             </Stack>
             <Stack spacing={3} direction="row" justifyContent="center">
               <Button 
+              // onclick function that deletes local storage
                 style={{
                     borderRadius: 17,
                     border: "solid #000000 1px",
@@ -168,11 +192,340 @@ function Home(){
             </Stack>
 
           </Stack>
+          </Container>
+
+          {/* backgroun color */}
+          <Container value="2"> 
+          <Grid container direction="row"> 
+            <Grid Item>
+              <CloseRoundedIcon/>
+              <ArrowBackRoundedIcon/>
+            </Grid>
+            <Grid Item sx={{ml:6}}>
+              <Typography align="center" sx={{fontFamily: 'Inter', fontWeight:600, fontSize:18, mb:2}}>
+                background color
+              </Typography>
+            </Grid>
+          </Grid>
+          
+          <Stack direction="Column" justifyContent="center"> 
+            <Stack spacing={3} sx={{mb:2}} direction="row" justifyContent="center">
+              <Button 
+                style={{
+                  borderRadius: 17,
+                  border: "solid #000000 1px",
+                  backgroundColor: "#B7DFC0",
+                  width: '130px',
+                  height: '60px',
+                  alt:"light green"
+                  }}>
+                </Button>
+                <Button 
+                  style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#FFD89E",
+                    width: '130px',
+                    height: '60px',
+                    alt:"light yellow"
+                    }}>
+                    </Button>
+                    <Button 
+                  style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#FFC6DA",
+                    width: '130px',
+                    height: '60px',
+                    alt: 'light pink'
+                    }}>
+                    </Button>
+                    <Button 
+                  style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#BFD9FF",
+                    width: '130px',
+                    height: '60px',
+                    alt:'light blue'
+                    }}>
+                    </Button>
+            </Stack>
+
+            <Stack spacing={3} sx={{mb:2}} direction="row" justifyContent="center"> 
+              <Button            
+                style={{
+                  borderRadius: 17,
+                  border: "solid #000000 1px",
+                  backgroundColor: "#246532",
+                  width: '130px',
+                  height: '60px',
+                  alt:'dark green'
+                  }}>
+                  </Button>
+              <Button 
+                style={{
+                  borderRadius: 17,
+                  border: "solid #000000 1px",
+                  backgroundColor: "#FF9900",
+                  width: '100px',
+                  height: '60px',
+                  alt:'orange'
+                  }}>
+                  </Button>
+
+                <Button 
+                  style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#F45890",
+                    width: '130px',
+                    height: '60px',
+                    alt:'pink'
+                    }}>
+                    </Button>
+
+                  <Button 
+                    style={{
+                      borderRadius: 17,
+                      border: "solid #000000 1px",
+                      backgroundColor: "#3777D8",
+                      width: '130px',
+                      height: '60px',
+                      alt:'blue'
+                      }}>
+                      </Button>
+            </Stack>
+
+          </Stack>
+          </Container>
+
+          {/* fonts */}
+          <Container value="3"> 
+          <Grid container direction="row"> 
+            <Grid Item>
+              <CloseRoundedIcon/>
+              <ArrowBackRoundedIcon/>
+            </Grid>
+            <Grid Item sx={{ml:6}}>
+              <Typography align="center" sx={{fontFamily: 'Inter', fontWeight:600, fontSize:18, mb:2}}>
+                fonts
+              </Typography>
+            </Grid>
+          </Grid>
+          
+          <Stack direction="Column" justifyContent="center"> 
+          <Button 
+          sx={{mb:2}}
+              // onclick function that deletes local storage
+                style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#DCDCDC",
+                    width: '290px',
+                    fontSize: "15px",
+                    fontFamily: 'Inter',
+                    color: 'black',
+                    textTransform: 'none',
+                  }}>
+                  Comic Sans & Slabo
+                </Button>
+                <Button 
+                sx={{mb:2}}
+                style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#DCDCDC",
+                    width: '290px',
+                    fontSize: "15px",
+                    fontFamily: 'Inter',
+                    color: 'black',
+                    textTransform: 'none',
+                  }}>
+                  Gravitas One & Inconsolata 
+                </Button>
+                <Button 
+                style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#DCDCDC",
+                    width: '290px',
+                    fontSize: "15px",
+                    fontFamily: 'Inter',
+                    color: 'black',
+                    textTransform: 'none',
+                  }}>
+                  Goldman & Gloria Hallelujah 
+                </Button>
+  
+
+          </Stack>
+          </Container>
+
+          {/* stickers */}
+          <Container value="4"> 
+          <Grid container direction="row"> 
+            <Grid Item>
+              <CloseRoundedIcon/>
+              <ArrowBackRoundedIcon/>
+            </Grid>
+            <Grid Item sx={{ml:6}}>
+              <Typography align="center" sx={{fontFamily: 'Inter', fontWeight:600, fontSize:18, mb:2}}>
+                stickers
+              </Typography>
+            </Grid>
+          </Grid>
+          
+          <Stack direction="Column" justifyContent="center"> 
+            <Stack spacing={3} sx={{mb:2}} direction="row" justifyContent="center">
+              <Button 
+                style={{
+                  borderRadius: 17,
+                  border: "solid #000000 1px",
+                  backgroundColor: "#F3F3F3",
+                  width: '130px',
+                  height: '60px',
+                  alt:"cherry sticker"
+                  }}>
+                    <img alt="" src="../images/cherry.png"/>
+                </Button>
+                <Button 
+                  style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#F3F3F3",
+                    width: '130px',
+                    height: '60px',
+                    alt:"yellow star sticker"
+                    }}>
+                      <img alt="" src="../images/star.png"/>
+                    </Button>
+                    <Button 
+                  style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#F3F3F3",
+                    width: '130px',
+                    height: '60px',
+                    alt: 'strawberry sticker'
+                    }}>
+                      <img alt="" src="../images/strawberry.png"/>
+                    </Button>
+                    <Button 
+                  style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#F3F3F3",
+                    width: '130px',
+                    height: '60px',
+                    alt:'blue heart sticker'
+                    }}>
+                      <img alt="" src="../images/blueheart.png"/>
+                    </Button>
+            </Stack>
+
+            <Stack spacing={3} sx={{mb:2}} direction="row" justifyContent="center"> 
+              <Button            
+                style={{
+                  borderRadius: 17,
+                  border: "solid #000000 1px",
+                  backgroundColor: "#F3F3F3",
+                  width: '130px',
+                  height: '60px',
+                  alt:'pink smile-face sticker'
+                  }}>
+                    <img alt="" src="../images/smile.png"/>
+                  </Button>
+              <Button 
+                style={{
+                  borderRadius: 17,
+                  border: "solid #000000 1px",
+                  backgroundColor: "#F3F3F3",
+                  width: '100px',
+                  height: '60px',
+                  alt:'lemon sticker'
+                  }}>
+                    <img alt="" src="../images/lemon.png"/>
+                  </Button>
+
+                <Button 
+
+                  style={{
+                    borderRadius: 17,
+                    border: "solid #000000 1px",
+                    backgroundColor: "#F3F3F3",
+                    width: '130px',
+                    height: '60px',
+                    alt:'squiggly line sticker'
+                    }}> 
+                    <img alt="" src="../images/squiggly.png"/>
+                    </Button>
+
+                  <Button 
+                    style={{
+                      borderRadius: 17,
+                      border: "solid #000000 1px",
+                      backgroundColor: "#F3F3F3",
+                      width: '130px',
+                      height: '60px',
+                      alt:'red heart sticker'
+                      }}>
+                      <img alt="" src="../images/redheart.png"/>
+                      </Button>
+            </Stack>
+
+          </Stack>
+            
+          </Container>
+
+
+          <Container value="5"> 
+          <Grid container direction="row"> 
+            <Grid Item>
+              <CloseRoundedIcon/>
+              <ArrowBackRoundedIcon/>
+            </Grid>
+            <Grid Item sx={{ml:6}}>
+              <Typography align="center" sx={{fontFamily: 'Inter', fontWeight:600, fontSize:18, mb:2}}>
+                notes
+              </Typography>
+            </Grid>
+          </Grid>
+           <Stack spacing={1} direction="row" justifyContent="center">
+                <Button 
+                  style={{
+                    border: "solid #000000 1px",
+                    backgroundColor: "#FFDCE9",
+                    width: '140px',
+                    height: '120px',
+                    }}>
+                </Button>
+                <Button 
+                  style={{
+                    border: "solid #000000 1px",
+                    backgroundColor: "#C8EDD0",
+                    width: '140px',
+                    height: '120px',
+                    }}>
+                </Button>
+
+                <Button 
+                  style={{
+                    border: "solid #000000 1px",
+                    backgroundColor: "#FFF5D3",
+                    width: '140px',
+                    height: '120px',
+                    }}>
+                </Button>
+            </Stack>            
+          </Container>
+          
         </Box>
+        
         </Draggable>
         {/* end toggle */}
         
-    <Container sx={{ mx: 'auto', mt: 20 }}>
+    <Container sx={{ mx: 'auto', mt: 15 }}>
       <Grid>
         <Box sx={{ bgcolor: '#FFFFFF', height: '100vh', width:'130vh', p: 5, margin: 'auto'}} alignItems='right'>
         
@@ -184,7 +537,7 @@ function Home(){
 
         <ThemeProvider theme={theme}>
           <Typography align="left" sx={{fontFamily: 'Tinos', fontSize:30}}>
-            my name is Honore and I’m a software engineer with a focus on UI/UX design. My goal is to  create a clean and a memorable user-experience.         
+            my name is Honore and I’m a software engineer with a focus on UI/UX design. My goal is to  create a clean and a memorable user-experience.           Want a look inside my design process? Customize this page using the draggable element above!   
           </Typography>
         </ThemeProvider>
 
@@ -192,6 +545,7 @@ function Home(){
         
       </Grid>
     </Container>
+    
     <span id="projects"/>
     {/* I need to map over my data, that way I can create a new porject in a form and automatically have it added to this page */}
     <Container sx={{ mx: 'auto' , my:7}}>
@@ -212,14 +566,16 @@ function Home(){
             />
             <ThemeProvider theme={theme}>
               <Typography align="left" sx={{fontFamily: 'Inter', fontWeight: 600, fontSize: 40}}>
-                name
+                Havit
               </Typography>
               <Typography variant="h6" component="h3" align="left" sx={{fontFamily: 'Inter', fontWeight:800, fontSize: 25, color: '#676767' }}>
-                ROLE
+                FRONT END DEVELOPER
               </Typography>
 
               <Typography align="left" sx={{fontFamily: 'Tinos', fontSize: 20, mb:2}}>
-              short descirption of application, features, and goals. Include design features, and possibly application process              </Typography>
+                All-in-one habit tracker that allows the creation, recording, and upkeep of daily habits. The creation of this application 
+                was to influence and help mainting a balanced scehudle for developers. 
+              </Typography>
             </ThemeProvider>
 
             <Button               
@@ -233,7 +589,8 @@ function Home(){
                 color: 'black',
                 textTransform: 'none',
                 }}
-                variant="contained" disableElevation color="inherit">
+                variant="contained" disableElevation color="inherit"
+                href="https://github.com/matisses-goldfish/Havit" target="_blank">
               explore more...
             </Button>
             </Box>
@@ -254,14 +611,16 @@ function Home(){
             />
             <ThemeProvider theme={theme}>
               <Typography align="left" sx={{fontFamily: 'Inter', fontWeight: 600, fontSize: 40}}>
-                name
+                Techy
               </Typography>
               <Typography variant="h6" component="h3" align="left" sx={{fontFamily: 'Inter', fontWeight:800, fontSize: 25, color: '#676767' }}>
-                ROLE
+                FRONT & BACKEND
               </Typography>
 
               <Typography align="left" sx={{fontFamily: 'Tinos', fontSize: 20, mb:2}} >
-              short descirption of application, features, and goals. Include design features, and possibly application process              </Typography>
+                This application enables developers to expand their technological repertoire by particpaiting in a community-styled forum. 
+                This application allows users to contirubte to the larger discussion of decentralizing technolgy.            
+              </Typography>
              </ThemeProvider>
 
             <Button 
@@ -275,7 +634,8 @@ function Home(){
                 color: 'black',
                 textTransform: 'none',
                 }}
-                variant="contained" disableElevation color="inherit">
+                variant="contained" disableElevation color="inherit"
+                href="https://github.com/matisses-goldfish/blog" target="_blank">
               explore more...
             </Button>
             </Box>
